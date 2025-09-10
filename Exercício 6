@@ -1,0 +1,18 @@
+#include <stdio.h> int engenharia(){
+printf("Engenharia");
+}
+int edificacoes(){ printf("Edificacoes");
+}
+int sistemas(){ printf("Sistemas");
+}
+int codinva(){ printf("Codigo Invalido");
+}
+int main()
+{
+int cod;
+printf("Insira o codigo do curso"); scanf("%d",&cod);
+switch(cod){
+case 1: engenharia(); break; case 2: edificacoes(); break; case 3: sistemas(); break; default: codinva(); break;
+}
+return 0;
+}
