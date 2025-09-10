@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+long long factorial(int n) {
+    if (n < 0) {
+        return 0; 
+    }
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    long long result = 1;
+    for (int i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    printf("Soma e produto das raizes da equacao (x + 1)! = x! + 6x\n");
+
+    long long sum_roots = 0;
+    long long product_roots = 1;
+    int root_count = 0;
+
+    for (int x = 0; x < 10; x++) {
+        long long left_side = factorial(x + 1);
+        long long right_side = factorial(x) + 6 * x;
+
+        if (left_side == right_side) {
+            printf("Raiz encontrada: x = %d\n", x);
+            sum_roots += x;
+            if (root_count == 0) {
+                
+                product_roots = x; 
+                if (x == 0) {
+                    product_roots = 1;
+                }
+            }
+            if (x != 0) {
+                product_roots *= x;
+            }
+            root_count++;
+        }
+    }
+
+    printf("Soma das raizes:8 %lld\n", sum_roots);
+    printf("Produto das raizes: %lld\n", product_roots);
+    
+    
+    printf("\n");
+    
+
+    return 0;
+}
