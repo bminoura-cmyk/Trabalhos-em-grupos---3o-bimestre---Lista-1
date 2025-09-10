@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int total_letras, letras_usadas;
+    int total_numeros, numeros_usados;
+    int possib_letras = 1, possib_numeros = 1;
+    int i;
+    int total;
+
+    printf("Digite o total de letras disponíveis: ");
+    scanf("%d", &total_letras);
+    printf("Digite o número de letras na placa: ");
+    scanf("%d", &letras_usadas);
+
+    printf("Digite o total de números disponíveis: ");
+    scanf("%d", &total_numeros);
+    printf("Digite o número de números na placa: ");
+    scanf("%d", &numeros_usados);
+
+    for(i = 0; i < letras_usadas; i++) {
+        possib_letras *= (total_letras - i);
+    }
+
+    for(i = 0; i < numeros_usados; i++) {
+        possib_numeros *= (total_numeros - i);
+    }
+
+    total = possib_letras * possib_numeros;
+
+    printf("O número de placas possíveis eh: %d\n", total);
+
+    return 0;
+}
