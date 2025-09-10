@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+long long factorial(int n) {
+    if (n < 0) {
+        return 0; 
+    }
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    long long result = 1;
+    for (int i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int total_pessoas = 7;
+    int lugares_disponiveis = 5;
+
+    
+    long long arranjos = factorial(total_pessoas) / factorial(total_pessoas - lugares_disponiveis);
+    
+    printf("Numero de modos diferentes para as pessoas se sentarem: %lld\n", arranjos);
+
+    return 0;
+}
+
