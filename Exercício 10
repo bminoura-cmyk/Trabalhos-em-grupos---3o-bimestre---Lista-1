@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void strToLower(char str[]) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
+
+int main() {
+    char meses[12][15] = {"janeiro", "fevereiro", "março", "abril",
+                          "maio", "junho", "julho", "agosto",
+                          "setembro", "outubro", "novembro", "dezembro"};
+
+    int dias[12] = {31, 28, 31, 30, 31, 30,
+                    31, 31, 30, 31, 30, 31};
+
+    char mesUsuario[20];
+    int encontrado = 0;
+
+    printf("Digite o nome do mês: ");
+    scanf("%19s", mesUsuario);
+
+    strToLower(mesUsuario);
+
+    for (int i = 0; i < 12; i++) {
+        if (strcmp(mesUsuario, meses[i]) == 0) {
+            printf("O mês de %s tem %d dias.\n", meses[i], dias[i]);
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Mês inválido!\n");
+    }
+
+    return 0;
+}
