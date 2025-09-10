@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+ struct nome{
+char nome[50];
+};
+char decrescente(struct nome lista[10]) { char x[50];
+int i,j;
+for (i = 0; i <= 8; ++i) {
+for (j = i + 1; j <= 9; ++j) {
+if (strcmp(lista[i].nome,lista[j].nome) < 0) { strcpy(x, lista[i].nome); strcpy(lista[i].nome, lista[j].nome); strcpy(lista[j].nome, x);
+}
+}
+
+}
+}
+ 
+char pesquisa(struct nome lista[10],char pesq[50], int*achou, int*posicao) { int j = 0;
+*achou=0; decrescente(lista);
+while (j <= 9 && *achou == 0) {
+if (strcmp(pesq, lista[j].nome) == 0) {
+*achou = 1;
+*posicao= j;
+} else { j++;
+}
+}
+}
+ 
+int main() {
+struct nome lista[10]; int i,j;
+int acha,pos; char pesq[50];
+char nome[10][50], x[50];
+printf("Escreva o nome dos 10 alunos:\n"); for (i = 0; i <= 9; ++i) {
+printf("Aluno %d:\n", i + 1); fgets(lista[i].nome, 50, stdin);
+}
+decrescente(lista);
+printf("Nomes em ordem decrescente:\n"); for (j = 0; j <= 9; ++j) {
+printf("%s\n", lista[j].nome);
+}
+printf("Insira o nome a ser pesquisado:\n"); fgets(pesq, 50, stdin); pesquisa(lista,pesq,&acha,&pos);
+if (acha == 1) {
+printf("Nome %s achado na posicao: %d", pesq, pos + 1);
+} else {
+printf("Nome nao encontrado\n");
+}
+ 
+return 0;
+}
